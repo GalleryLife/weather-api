@@ -5,8 +5,9 @@ import axios from "axios";
 export const setWeather = () => async (dispatch) => {
  dispatch(setIsLoading(true))
  try {
-  const {data} = await axios(`http://api.weatherapi.com/v1/current.json?key=85f575b9c0924ee390d135459220607&q=Kiev&aqi=yes`)
-  dispatch({type: SET_BASE_WEATHER, payload: data})
+  const data = await fetch(`http://api.weatherapi.com/v1/current.json?key=85f575b9c0924ee390d135459220607&q=Kiev&aqi=yes`)
+   .then(response => response.json())
+   .then(data => dispatch({type: SET_BASE_WEATHER, payload: data}))
  } catch (e) {
   alert(e)
  }
@@ -16,8 +17,9 @@ export const setWeather = () => async (dispatch) => {
 export const getWeather = (value) => async (dispatch) => {
  dispatch(setIsLoading(true))
  try {
-  const {data} = await axios(`${BASE_GET_URL}${BASE_KEY}&q=${value}&aqi=yes`)
-  dispatch({type: GET_WEATHER, payload: data})
+  const data = await fetch(`${BASE_GET_URL}${BASE_KEY}&q=${value}&aqi=yes`)
+   .then(response => response.json())
+   .then(data => dispatch({type: GET_WEATHER, payload: data}))
  } catch (e) {
   alert(e)
  }
@@ -27,8 +29,9 @@ export const getWeather = (value) => async (dispatch) => {
 export const searchMode = (value) => async (dispatch) => {
  dispatch(setIsLoading(true))
  try {
-  const {data} = await axios(`${BASE_SEARCH_URL}${BASE_KEY}&q=${value}`)
-  dispatch({type: SEARCH_PLACE, payload: data})
+  const data = await fetch(`${BASE_SEARCH_URL}${BASE_KEY}&q=${value}`)
+   .then(response => response.json())
+   .then(data => dispatch({type: SEARCH_PLACE, payload: data}))
  } catch (e) {
   alert(e)
  }

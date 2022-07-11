@@ -20,7 +20,7 @@ function App() {
  const [isOpen, setOpen] = useState(true);
 
  const data = useSelector((state) => state);
-
+ console.log(data)
  const dispatch = useDispatch();
 
  const changeValue = (text) => {

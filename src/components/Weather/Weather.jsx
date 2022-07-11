@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 function Weather() {
 
  const data = useSelector((state) => state);
+
  return (
   <section className={styles.weatherWrapper}>
 	{data.weather.data.map(({location, current}) => (
@@ -13,7 +14,7 @@ function Weather() {
 		<h1 className={styles.city}>{location.name}</h1>
 		<h2 className={styles.country}>{location.country}</h2>
 		<div>
-		 <span className={styles.temp}>{current.temp_c}</span>
+		 <span className={styles.temp}>{current.temp_c}°</span>
 		</div>
 	  </div>
 	  <div>
